@@ -14,6 +14,10 @@
     * ListView: Devolver una lista de las instancias de un modelo
     * DetailView: Devolver una instancia de un modelo
 
+* Vistas CRUD con CBV
 
+    * CreateView: Clase para crear un formulario y agregar nueva instancia de un modelo
+
+    
     
 

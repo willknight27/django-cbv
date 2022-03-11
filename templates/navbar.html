@@ -1,8 +1,9 @@
 <!-- Navegación -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand" href="{% url 'home' %}">Playground</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ned" aria-controls="ned" aria-expanded="false">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ned" aria-controls="ned"
+      aria-expanded="false">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="ned">
@@ -11,10 +12,30 @@
           <a class="nav-link" href="{% url 'home' %}">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'pages' %}">Páginas</a>
+          <a class="nav-link" href="{% url 'pages:pages' %}">Páginas</a>
         </li>
+
+        <!-- MENU DROPDOWN -->
+        {% if request.user.is_staff %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            CRUD
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{% url 'pages:create' %}">Crear página</a></li>
+            <li><a class="dropdown-item" href="{% url 'pages:pages' %}">Listar páginas</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        {% endif %}
+
+
       </ul>
-      <ul class="navbar-nav">
+      <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <a class="nav-link" href="/admin/">
             {% if request.user.is_staff %}Admin{% else %}Acceder{% endif %}
